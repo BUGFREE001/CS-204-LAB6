@@ -1,1 +1,45 @@
 
+
+#1
+
+
+#include <stdio.h>
+
+int *biggest_of_two(int*, int*);
+
+int *biggest_of_three(int*, int*, int*);
+
+int main ()
+{
+	int x, y;
+	printf ("please give 2 arguments: ");
+	scanf ("%d %d", &x, &y);
+	
+	printf ("Largest between 2 arguments is %d.\n", *biggest_of_two (&x, &y));
+	
+	int a, b, c;
+	printf ("please give 3 arguments: ");
+	scanf ("%d %d %d", &a, &b, &c);
+	
+	printf ("Largest among 3 arguments is %d.", *biggest_of_three (&a, &b, &c));
+	
+	return 0;
+}
+
+int *biggest_of_two(int* x, int* y)
+{
+	if (*x<*y)
+	  return y;
+	else
+      return x;
+}
+
+int *biggest_of_three(int* a, int* b, int* c)
+{
+  if (*a>*b && *a>*c)
+    return a;
+  if (*b>*a && *b>*c)
+    return b;
+  if (*c>*b && *c>*a)
+    return c;
+}
