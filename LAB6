@@ -110,3 +110,283 @@ int len(char* ch)
    }
    return ctr-1;
 }
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#4
+
+#include <stdio.h>
+
+int main()
+{
+    char s[100000];
+    char rvrs[100000];
+    char *sptr = s; 
+    char *rptr = rvrs; 
+
+    int i = -1;
+
+    printf("Input a string: ");
+    scanf("%s", s);
+
+    while(*sptr)
+    {
+        sptr++;
+        i++; 
+    }
+
+    while(i >= 0)
+    {
+        sptr--; 
+        *rptr = *sptr;  
+        rptr++; 
+        i--;    
+    }
+
+    *rptr = '\0'; 
+    rptr = rvrs; 
+
+    printf("\nThe reverse of the string is: %s ", rvrs);
+
+    return 0;
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#5
+
+#include <stdio.h>
+
+int main()
+{
+    char sen[100000];
+    int ctr1=0, ctr2=0;
+	
+    printf("Enter a sentence: ");
+    fgets (sen, sizeof sen, stdin);
+    
+    int s=0;
+    for (int i=0; sen[i]!='\0'; i++){
+        s += 1;
+    }
+    
+ 
+    int a[10000];
+	for (int i=0; i<s+1; i++){
+	  if (sen[i]==' ' || sen[i]=='\0'){
+        	ctr1 += 1;
+        	a[ctr1-1]=ctr2;
+        	ctr2 = 0;
+         }
+      	  else{
+          ctr2 += 1;
+        }
+    }
+    
+ 
+    printf ("Total numbers of words: %d\n", ctr1);
+    printf ("Number of characters for each word:");
+    
+    for (int i=0; i < ctr1; i++){
+      if (i==ctr1-1){
+          a[i]-=1;
+      }
+      printf ("%d ", a[i]);
+    }
+    
+	return 0;
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#6
+
+
+#include <stdio.h>
+ 
+int main()
+{
+   char sen[100000], spce[10000];
+   int i = 0, j = 0;
+   printf("Enter a string: \n");
+   fgets(sen, sizeof sen, stdin);
+ 
+   while (sen[i] != '\0'){
+      if (!(sen[i] == ' ' )) {
+        if (sen[i] == '.'){
+          sen[i] = ':';
+        } 
+        spce[j] = sen[i];
+        j++;
+      }
+      i++;
+   }
+ 
+   spce[j] = '\0';
+   printf("After replacements:\n%s", spce);
+ 
+   return 0;
+}
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#7
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    char str1[100000], str2[100000], i, j;
+
+    printf("Please type the 1st string: ");
+    fgets(str1, sizeof str1, stdin);
+    printf("Please type the 2nd string: ");
+    fgets(str2, sizeof str2, stdin);
+ 
+    for(i = 0; str1[i] != '\0'; i++);
+
+    for(j = 0; str2[j] != '\0'; j++, i++){
+        str1[i] = str2[j];
+    }
+    
+    str1[i] = '\0';
+    printf("Concatenation done:\n%s", str1);
+
+    return 0;
+}
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#8
+
+
+
+#include <stdio.h>
+
+void fac(int,int*);
+
+int main()
+{
+  int r;
+  int m;
+      printf("Input a number : ");
+      scanf("%d",&m);		 
+  
+  
+  fac(m,&r);
+  printf("%d's factorial is: %d \n\n",m,r);
+  return 0;
+}
+
+void fac(int n,int *f){
+      int i;
+      *f =1;
+      for(i=1;i<=n;i++)
+      *f=*f*i;
+    }
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#9
+
+
+#include <stdio.h>
+
+int* odd(int, int *);
+
+int main()
+{
+    int i, n;
+    
+    printf("Please type the array size: ");
+    scanf("%d", &n);
+    int array[n];
+    odd(n, array);
+    printf("%d Even Numbers showing below:\n", n);
+    for(i = 0; i < n; i++){
+      printf("%d ", array[i]);
+    }  
+    return 0;
+}
+
+int* odd(int n, int *array){
+    int i;
+    for(i = 0; i < n; i++){
+       array[i] = 2*i+1;
+    }
+    return array;
+}
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#10
+
+
+
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+  int i,j,n;
+
+  char str[1000][1000],s[1000];
+  printf("Please give the number of names:\n");
+  scanf("%d",&n);
+
+  printf("Enter names:\n");
+  for(i=0;i<n;i++){
+    scanf("%s",str[i]);
+  }
+  for(i=0;i<n;i++){
+   for(j=i+1;j<n;j++){
+     if(strcmp(str[i],str[j])>0){
+       strcpy(s,str[i]);
+       strcpy(str[i],str[j]);
+       strcpy(str[j],s);
+     } 
+   }
+  }
+  
+  printf("\nAfter sorted:\n");
+  for(i=0;i<n;i++){
+    printf("%s\n",str[i]);
+  }
+  return 0;
+}
+
+
