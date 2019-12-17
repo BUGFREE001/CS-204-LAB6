@@ -5,45 +5,45 @@
 
 #include <stdio.h>
 
-int *biggest_of_two(int*, int*);
-
-int *biggest_of_three(int*, int*, int*);
-
-int main ()
+int *biggest_of_two(int *a,int *b)
 {
-	int x, y;
-	printf ("please give 2 arguments: ");
-	scanf ("%d %d", &x, &y);
-	
-	printf ("Largest between 2 arguments is %d.\n", *biggest_of_two (&x, &y));
-	
-	int a, b, c;
-	printf ("please give 3 arguments: ");
-	scanf ("%d %d %d", &a, &b, &c);
-	
-	printf ("Largest among 3 arguments is %d.", *biggest_of_three (&a, &b, &c));
-	
-	return 0;
+if(*a>*b)
+{
+return a;
+}
+else
+{
+return b;
+}
 }
 
-int *biggest_of_two(int* x, int* y)
+int *biggest_of_three(int *a,int *b,int *c)
 {
-	if (*x<*y)
-	  return y;
-	else
-      return x;
+if(*a>=*b && *a>=*c)
+{
+return a;
+}
+else if(*b>=*c && *b>=*a)
+{
+return b;
+}
+else
+{
+return c;
+}
 }
 
-int *biggest_of_three(int* a, int* b, int* c)
-{
-  if (*a>*b && *a>*c)
-    return a;
-  if (*b>*a && *b>*c)
-    return b;
-  if (*c>*b && *c>*a)
-    return c;
-}
+int main() {
+int a,b,c;
+printf("Enter two numbers to get biggest of two numbers(give space between two numbers) \n");
+scanf("%d %d",&a,&b);
+printf("Biggest of two numbers is :%d \n",*biggest_of_two(&a,&b));
 
+printf("Enter three numbers to get biggest of three numbers(give space between three numbers) \n");
+scanf("%d %d %d",&a,&b,&c);
+printf("Biggest of three numbers is :%d \n",*biggest_of_three(&a,&b,&c));
+return 0;
+}
 
 
 
