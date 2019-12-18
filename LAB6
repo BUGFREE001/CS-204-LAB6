@@ -55,27 +55,30 @@ return 0;
 
 #include <stdio.h>
 
-void div_rem(int, int, int*, int*);
 
-int main()
-{
-	int a, b, q=0, r=0;
-	printf ("Please give 2 random numbers to find their quotient and remainder ");
-	scanf ("%d %d", &a, &b);
-	
-	div_rem( a, b, &q, &r);
-	
-  printf ("The quotient of these 2 numbers is %d, and the remainder is %d", q, r);
-
-	return 0;	
+void div_rem(int a , int b , int *quotient , int *remains){
+// calculate quotient
+int q = a/b;
+//calculate remainder
+int r = a%b;
+//storing results in pointers
+quotient = q;
+remains = r;
+printf("Quotient : %d",quotient);
+printf("\nRemainder : %d",remains);
 }
 
-void div_rem(int a, int b, int *q, int *r)
-{
-  *q=a/b;
-  *r=a%b;
-}
+int main(void) {
+int num1, num2, *quotient,*remains;
+printf("Enter dividend: ");
+scanf("%d", &num1);
+printf("Enter divisor: ");
+scanf("%d", &num2);
 
+// Calling our function
+div_rem(num1 , num2 ,quotient ,remains);
+
+}
 
 
 
