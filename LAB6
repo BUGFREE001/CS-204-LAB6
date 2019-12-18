@@ -87,28 +87,18 @@ void div_rem(int a, int b, int *q, int *r)
 
 #include <stdio.h>
 
-int len(char*);
-int main() 
-{
-   char str1[100000];
-   int l;
-   printf("Input a string: ");
-   fgets(str1, sizeof str1, stdin);
-   
-   l = len(str1);
-   printf("The length of the given string pointers is: %d ", l);
-  return 0;
+int length(char* str){
+    int i = 0;
+    while(str[i]!='\0'){
+        i++;
+    }
+    return i;
 }
- 
-int len(char* ch) 
+
+int main()
 {
-   int ctr = 0;
-   while (*ch != '\0') 
-   {
-      ctr++;
-      ch++;
-   }
-   return ctr-1;
+    printf("%d",length("hello"));
+    return 0;
 }
 
 
