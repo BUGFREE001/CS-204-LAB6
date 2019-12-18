@@ -121,37 +121,31 @@ int len(char* ch)
 
 #include <stdio.h>
 
+void reverse(char* str){
+    int i = 0;
+    char *p = str, *q;
+    char ch;
+    while(str[i]!='\0'){
+        i++;
+    }
+    q = str+i-1;
+    
+    while(p<q){
+        ch = *p;
+        *p = *q;
+        *q = ch;
+        p++;
+        q--;
+    }
+}
+
 int main()
 {
-    char s[100000];
-    char rvrs[100000];
-    char *sptr = s; 
-    char *rptr = rvrs; 
-
-    int i = -1;
-
+    char str[100];
     printf("Input a string: ");
-    scanf("%s", s);
-
-    while(*sptr)
-    {
-        sptr++;
-        i++; 
-    }
-
-    while(i >= 0)
-    {
-        sptr--; 
-        *rptr = *sptr;  
-        rptr++; 
-        i--;    
-    }
-
-    *rptr = '\0'; 
-    rptr = rvrs; 
-
-    printf("\nThe reverse of the string is: %s ", rvrs);
-
+    scanf("%s",str);
+    reverse(str);
+    printf("Reverse of the string is: %s",str);
     return 0;
 }
 
