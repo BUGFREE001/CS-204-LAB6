@@ -237,28 +237,24 @@ int main()
 #7
 
 
-
 #include <stdio.h>
+int main() {
+char s1[100] = "computer ", s2[] = "programming";
+int i, j;
+printf("\nFirst string is :");
+puts(s1);
+printf("\nSecond string is :");
+puts(s2);
+for (i = 0; s1[i] != '\0'; ++i);
+// concatenating each character of s2 to s1
+for (j = 0; s2[j] != '\0'; ++j, ++i) {
+s1[i] = s2[j];
+}
 
-int main()
-{
-    char str1[100000], str2[100000], i, j;
-
-    printf("Please type the 1st string: ");
-    fgets(str1, sizeof str1, stdin);
-    printf("Please type the 2nd string: ");
-    fgets(str2, sizeof str2, stdin);
- 
-    for(i = 0; str1[i] != '\0'; i++);
-
-    for(j = 0; str2[j] != '\0'; j++, i++){
-        str1[i] = str2[j];
-    }
-    
-    str1[i] = '\0';
-    printf("Concatenation done:\n%s", str1);
-
-    return 0;
+s1[i] = '\0';
+printf("After concatenation: ");
+puts(s1);
+return 0;
 }
 
 
