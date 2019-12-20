@@ -271,31 +271,27 @@ int main()
 #8
 
 
+#include<stdio.h>
+#include<stdlib.h>
 
-#include <stdio.h>
-
-void fac(int,int*);
+int fact(int* num, int* n)
+{
+    for ((*n) = 1; (*n) <= (*num); (*n)++)
+    {
+        *n = (*n)*(*num);
+    }
+}
 
 int main()
 {
-  int r;
-  int m;
-      printf("Input a number : ");
-      scanf("%d",&m);		 
-  
-  
-  fac(m,&r);
-  printf("%d's factorial is: %d \n\n",m,r);
-  return 0;
+    int num, n;
+    printf("Write the number to take factorial \n");
+    scanf("%d", &num);
+    fact(&num, &n);
+    printf("Factorial = %d", n);
+
+    return 0;
 }
-
-void fac(int n,int *f){
-      int i;
-      *f =1;
-      for(i=1;i<=n;i++)
-      *f=*f*i;
-    }
-
 
 
 
