@@ -151,82 +151,89 @@ int main()
 #5
 
 #include <stdio.h>
-
+#include <string.h>
 int main()
 {
-    char sen[100000];
-    int ctr1=0, ctr2=0;
-	
-    printf("Enter a sentence: ");
-    fgets (sen, sizeof sen, stdin);
-    
-    int s=0;
-    for (int i=0; sen[i]!='\0'; i++){
-        s += 1;
-    }
-    
- 
-    int a[10000];
-	for (int i=0; i<s+1; i++){
-	  if (sen[i]==' ' || sen[i]=='\0'){
-        	ctr1 += 1;
-        	a[ctr1-1]=ctr2;
-        	ctr2 = 0;
-         }
-      	  else{
-          ctr2 += 1;
-        }
-    }
-    
- 
-    printf ("Total numbers of words: %d\n", ctr1);
-    printf ("Number of characters for each word:");
-    
-    for (int i=0; i < ctr1; i++){
-      if (i==ctr1-1){
-          a[i]-=1;
-      }
-      printf ("%d ", a[i]);
-    }
-    
-	return 0;
+char str[50];
+int i=0, word=0, numChr[10];
+int j = 0;
+   printf("\nEnter a Sentence: ");
+gets(str);
+while (str[i] != '\0') // run till null found
+{
+if (str[i] == ' ') // check for num words
+{
+word++; // increase word count
+j = 0; // reset char count
 }
-
+else
+numChr[word] = ++j; // store frequency
+i++; // increase string index
+}
+printf("\nTotal number of words: %d", word+1); // print message
+printf("\nNumber of characters for each: "); // print num characters
+for(i = 0; i <= word; i++){
+   printf("%d ",numChr[i]);
+   }
+}
 
 
 ------------------------------------------------------------------------------------------------------------------------------
 
 
-
 #6
 
+Note: please make sure your complier has <conio.h> !!!
 
-#include <stdio.h>
- 
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+
 int main()
 {
-   char sen[100000], spce[10000];
-   int i = 0, j = 0;
-   printf("Enter a string: \n");
-   fgets(sen, sizeof sen, stdin);
- 
-   while (sen[i] != '\0'){
-      if (!(sen[i] == ' ' )) {
-        if (sen[i] == '.'){
-          sen[i] = ':';
-        } 
-        spce[j] = sen[i];
-        j++;
-      }
-      i++;
+   char userSentence[100];
+   int i=0, lenSen, j;
+   int c = 0,d=0;
+   char updated[100];
+  
+   printf("Enter your sentence: ");
+   gets(userSentence);
+   lenSen=strlen(userSentence);
+   for(i=0; i<lenSen; i++)
+   {
+   if(isspace(userSentence[i]))
+   {
+   for(j=i; j<lenSen;j++)
+           {
+               userSentence[j]=userSentence[j+1];
+           }
+       lenSen--;
    }
- 
-   spce[j] = '\0';
-   printf("After replacements:\n%s", spce);
- 
-   return 0;
+       if(userSentence[i]=='.')
+       {
+       userSentence[i] = ':';
+       }
+   }
+  
+   while (userSentence[c] != '\0')
+{
+if (!(isspace(userSentence[c]) && isspace(userSentence[c + 1]))) {
+updated[d] = userSentence[c];
+d++;
+}
+c++;
 }
 
+updated[d] = '\0';
+  
+   printf("Updated sentence = %s", updated);
+   getch();
+
+return 0;
+}
+
+Output:
 
 
 
@@ -347,36 +354,35 @@ int main()
 
 
 
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 
-int main()
+void main()
 {
-  int i,j,n;
-
-  char str[1000][1000],s[1000];
-  printf("Please give the number of names:\n");
-  scanf("%d",&n);
-
-  printf("Enter names:\n");
-  for(i=0;i<n;i++){
-    scanf("%s",str[i]);
-  }
-  for(i=0;i<n;i++){
-   for(j=i+1;j<n;j++){
-     if(strcmp(str[i],str[j])>0){
-       strcpy(s,str[i]);
-       strcpy(str[i],str[j]);
-       strcpy(str[j],s);
-     } 
-   }
-  }
   
-  printf("\nAfter sorted:\n");
-  for(i=0;i<n;i++){
-    printf("%s\n",str[i]);
-  }
-  return 0;
+int n;
+
+printf("Enter the no of names: \n");
+scanf("%d", &n);
+char name[n][30], temp[30];
+  
+printf("Enter %d names:[in lowercase:] \n", n);
+for (int i = 0; i < n; i++)
+scanf("%s", name[i]);
+
+for (int i=0;i<n-1;i++)
+{
+for (int j=i+1;j<n;j++)
+{
+if (strcmp(name[i], name[j]) > 0)
+{
+strcpy(temp, name[i]);
+strcpy(name[i], name[j]);
+strcpy(name[j], temp);
 }
-
-
+}
+}
+printf("Alphabetical order:\n");
+for (int i = 0; i < n; i++)
+printf("%s\n",name[i]);
+}
