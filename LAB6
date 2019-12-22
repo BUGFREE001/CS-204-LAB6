@@ -150,6 +150,8 @@ int main()
 
 #5
 
+
+
 #include <stdio.h>
 #include <string.h>
 int main()
@@ -158,20 +160,22 @@ char str[50];
 int i=0, word=0, numChr[10];
 int j = 0;
    printf("\nEnter a Sentence: ");
-gets(str);
-while (str[i] != '\0') // run till null found
+   fgets(str, sizeof(str), stdin);   
+   int len = strlen(str);
+   str[--len] = '\0';
+   while (str[i] != '\0')
 {
-if (str[i] == ' ') // check for num words
+if (str[i] == ' ')
 {
-word++; // increase word count
-j = 0; // reset char count
+word++;
+j = 0;
 }
 else
-numChr[word] = ++j; // store frequency
-i++; // increase string index
+numChr[word] = ++j;
+i++;
 }
-printf("\nTotal number of words: %d", word+1); // print message
-printf("\nNumber of characters for each: "); // print num characters
+printf("\nTotal number of words: %d", word+1);
+printf("\nNumber of characters for each: ");
 for(i = 0; i <= word; i++){
    printf("%d ",numChr[i]);
    }
